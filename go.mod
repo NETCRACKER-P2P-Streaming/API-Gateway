@@ -1,4 +1,4 @@
-module com.netcracker.p2p-streaming.api-gateway
+module go.bin.api-gateway
 
 go 1.16
 

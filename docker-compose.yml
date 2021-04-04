@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  api-gateway:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 7070:7070
+    environment:
+      - FC_ENABLE=1
+      - FC_SETTINGS=/etc/krakend/settings
+      - FC_PARTIALS=/etc/krakend/partials
+      - FC_OUT=/etc/krakend/compiled-krakend.json
+    entrypoint: sh -c "krakend run -c /etc/krakend/krakend.json; cat /etc/krakend/compiled-krakend.json";

@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "name": "Krakend Api-gateway",
+  "port": 7070,
+  "extra_config": null,
+  "endpoints": [
+     
+    {
+      "endpoint": "/api/stream/get/{userId}",
+      "headers_to_pass": ["*"],
+      "querystring_params":["*"],
+      "output_encoding": "no-op",
+      "method": "ANY",
+      "backend": [
+        {
+          "host": ["localhost:9090"],
+          "url_pattern": "/*path",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    
+    {
+      "endpoint": "/api/v1/users",
+      "headers_to_pass": ["*"],
+      "querystring_params":["*"],
+      "output_encoding": "no-op",
+      "method": "ANY",
+      "backend": [
+        {
+          "host": ["localhost:9090"],
+          "url_pattern": "/*path",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    
+    {
+       "endpoint": "/api/v1/admin/users-in-group",
+       "extra_config": {
+  "github.com/devopsfaith/krakend-jose/validator": {
+       "alg": "RS256",
+       "cache": true,
+       "issuer": "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_h9rDjUN7r",
+       "roles_key": "cognito:groups",
+       "roles_key_is_nested": true,
+       "disable_jwk_security": true,
+       "roles": [
+         "ADMIN"
+       ],
+       "jwk-url": "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_h9rDjUN7r/.well-known/jwks.json"
+     }
+},
+       "headers_to_pass": ["*"],
+       "querystring_params":["*"],
+       "output_encoding": "no-op",
+       "method": "ANY",
+       "backend": [
+             {
+           "host": ["test"],
+           "url_pattern": "/*path",
+           "encoding": "no-op"
+            }
+          ]
+     }
+  ]
+}

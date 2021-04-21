@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "name": "{{ .service.name }}",
+  "port": {{ .service.port }},
+  "extra_config": {{ marshal .service.extra_config }},
+  "endpoints": [
+     {{ range .endpoint.service.public_group}}
+    {
+      "endpoint": "{{ .endpoint }}",
+      "headers_to_pass": ["*"],
+      "querystring_params":["*"],
+      "output_encoding": "no-op",
+      "method": "ANY",
+      "backend": [
+        {
+          "host": ["{{ $.endpoint.service.host }}"],
+          "url_pattern": "/*path",
+          "encoding": "no-op"
+        }
+      ]
+    },
+    {{ end }}
+    {
+       "endpoint": "/api/v1/admin/users-in-group",
+       "extra_config": {{ include "authorization_admin.txt" }},
+       "headers_to_pass": ["*"],
+       "querystring_params":["*"],
+       "output_encoding": "no-op",
+       "method": "ANY",
+       "backend": [
+             {
+           "host": ["test"],
+           "url_pattern": "/*path",
+           "encoding": "no-op"
+            }
+          ]
+     }
+  ]
+}

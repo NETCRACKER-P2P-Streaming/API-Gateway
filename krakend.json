@@ -1,39 +1,37 @@
 {
+  {{ $AmazonCognitoAdapter := "localhost:9090" }}
+  {{ $StreamRegistry := "localhost:8080" }}
   "version": 2,
   "name": "{{ .service.name }}",
   "port": {{ .service.port }},
   "extra_config": {{ marshal .service.extra_config }},
   "endpoints": [
-     {{ range .endpoint.service.public_group}}
-    {
-      "endpoint": "{{ .endpoint }}",
-      "headers_to_pass": ["*"],
-      "querystring_params":["*"],
-      "output_encoding": "no-op",
-      "method": "ANY",
-      "backend": [
-        {
-          "host": ["{{ $.endpoint.service.host }}"],
-          "url_pattern": "/*path",
-          "encoding": "no-op"
-        }
-      ]
-    },
-    {{ end }}
-    {
-       "endpoint": "/api/v1/admin/users-in-group",
-       "extra_config": {{ include "authorization_admin.txt" }},
-       "headers_to_pass": ["*"],
-       "querystring_params":["*"],
-       "output_encoding": "no-op",
-       "method": "ANY",
-       "backend": [
-             {
-           "host": ["test"],
-           "url_pattern": "/*path",
-           "encoding": "no-op"
-            }
-          ]
-     }
+      {{ template "public_group" "/api/v1/registration"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/users/{username}"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/users/reset-password"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/users"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/streamers"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/users/file"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/auth/login"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/auth/refresh-token"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "public_group" "/api/v1/auth/logout"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+
+      {{ template "authorization_admin_group" "/api/v1/admin/grant-authority"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "authorization_admin_group" "/api/v1/admin/users-in-group"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "authorization_admin_group" "/api/v1/admin/disable-user"}}
+      {{ template "backend" $AmazonCognitoAdapter}},
+      {{ template "authorization_admin_group" "/api/v1/admin/enable-user"}}
+      {{ template "backend" $AmazonCognitoAdapter}}
   ]
 }

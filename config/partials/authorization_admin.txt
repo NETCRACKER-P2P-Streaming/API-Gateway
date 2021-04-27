@@ -2,13 +2,13 @@
   "github.com/devopsfaith/krakend-jose/validator": {
        "alg": "RS256",
        "cache": true,
-       "issuer": "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_h9rDjUN7r",
+       "issuer": "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_Yl9HrRUCK",
        "roles_key": "cognito:groups",
        "roles_key_is_nested": true,
        "disable_jwk_security": true,
        "roles": [
          "ADMIN"
        ],
-       "jwk-url": "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_h9rDjUN7r/.well-known/jwks.json"
+       "jwk-url": "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_Yl9HrRUCK/.well-known/jwks.json"
      }
 }

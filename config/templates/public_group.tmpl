@@ -1,0 +1,19 @@
+{{ define "public_group" }}
+   {
+     "endpoint": "{{ . }}",
+     "headers_to_pass": ["*"],
+     "querystring_params":["*"],
+     "output_encoding": "no-op",
+     "method": "ANY",
+{{end}}
+
+{{ define "backend" }}
+    "backend": [
+      {
+        "host": ["{{ . }}"],
+         "url_pattern": "/*path",
+         "encoding": "no-op"
+      }
+      ]
+   }
+{{end}}

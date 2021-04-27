@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	krakend "github.com/devopsfaith/krakend-ce"
+	"github.com/devopsfaith/krakend-ce"
 	cmd "github.com/devopsfaith/krakend-cobra"
 	flexibleconfig "github.com/devopsfaith/krakend-flexibleconfig"
 	viper "github.com/devopsfaith/krakend-viper"

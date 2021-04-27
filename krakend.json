@@ -4,7 +4,7 @@
   "version": 2,
   "name": "{{ .service.name }}",
   "port": {{ .service.port }},
-  "extra_config": {{ marshal .service.extra_config }},
+  "extra_config": {{ include "cors.txt" }},
   "endpoints": [
       {{ template "public_group" "/api/v1/registration"}}
       {{ template "backend" $AmazonCognitoAdapter}},

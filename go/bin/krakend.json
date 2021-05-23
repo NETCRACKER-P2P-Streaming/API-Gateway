@@ -14,7 +14,7 @@
       {{ template "backend" $AmazonCognitoAdapter}},
       {{ template "public_group" "/api/v1/users"}}
       {{ template "backend" $AmazonCognitoAdapter}},
-      {{ template "public_group" "/api/v1/streamers"}}
+      {{ template "public_group" "/api/v1/user/streamers"}}
       {{ template "backend" $AmazonCognitoAdapter}},
       {{ template "public_group" "/api/v1/users/file"}}
       {{ template "backend" $AmazonCognitoAdapter}},
@@ -32,6 +32,34 @@
       {{ template "authorization_admin_group" "/api/v1/admin/disable-user"}}
       {{ template "backend" $AmazonCognitoAdapter}},
       {{ template "authorization_admin_group" "/api/v1/admin/enable-user"}}
-      {{ template "backend" $AmazonCognitoAdapter}}
-  ]
+      {{ template "backend" $AmazonCognitoAdapter}},
+
+      {{ template "public_group" "/api/v1/streams-page"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/streams/{streamId}"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/stream/close"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/streamers"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/streams/{streamId}/info"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/streams/{streamId}/owner"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/stream/decrease-viewers"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/stream/increase-views"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/stream"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/categories/{categoryId}"}}
+      {{ template "backend" $StreamRegistry}},
+
+      {{ template "authorization_admin_group" "/api/v1/admin/category"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "authorization_admin_group" "/api/v1/admin/stream"}}
+      {{ template "backend" $StreamRegistry}},
+      {{ template "authorization_admin_group" "/api/v1/admin/stream/close"}}
+      {{ template "backend" $StreamRegistry}}
+]
 }

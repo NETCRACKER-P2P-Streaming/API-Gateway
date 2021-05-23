@@ -13,8 +13,7 @@ EXPOSE 7070
 ENV FC_ENABLE=1
 ENV FC_SETTINGS=/go/bin/api-gateway/config/settings
 ENV FC_PARTIALS=/go/bin/api-gateway/config/partials
-ENV FC_OUT=/go/bin/api-gateway/config/compiled-krakend.json
+ENV FC_OUT=/go/bin/api-gateway/compiled-krakend.json
 ENV FC_TEMPLATES=/go/bin/api-gateway/config/templates
 WORKDIR /go/bin/api-gateway
-RUN cat /go/bin/api-gateway/config/compiled-krakend.json
 ENTRYPOINT ["./API-Gateway","run", "-c","./krakend.json"]

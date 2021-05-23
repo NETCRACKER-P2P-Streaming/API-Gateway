@@ -17,4 +17,4 @@ require (
 	golang.org/x/text v0.3.5 // indirect
 )
 
-replace github.com/devopsfaith/krakend v1.3.0 => github.com/kristosiisusov/krakend v1.3.0
+replace github.com/devopsfaith/krakend v1.3.0 => github.com/kristosiisusov/krakend v1.3.2

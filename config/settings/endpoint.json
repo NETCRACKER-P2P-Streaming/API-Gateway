@@ -1,0 +1,36 @@
+{
+  "public_group": [
+    {
+      "endpoint": "/api/stream/get/{userId}",
+      "backend": "/api/stream/get/{userId}",
+      "method" : "GET",
+      "host": "http://192.168.252.1:9090"
+    },
+    {
+      "endpoint": "/api/v1/users",
+      "backend": "/api/v1/users",
+      "method" : "GET",
+      "host": "http://192.168.252.1:9090"
+    }
+  ],
+  "public_group_auth": [
+    {
+      "endpoint": "/api/v1/admin/users-in-group",
+      "backend": "/api/v1/admin/users-in-group",
+      "method" : "GET",
+      "host": "http://192.168.252.1:9090"
+    },
+    {
+      "endpoint": "/api/v1/auth/logout",
+      "backend": "/api/v1/auth/logout",
+      "method" : "GET",
+      "host": "http://192.168.252.1:9090"
+    },
+    {
+      "endpoint": "/api/v1/auth/refresh-token/updateToken",
+      "backend": "/api/v1/auth/refresh-token/updateToken",
+      "method" : "GET",
+      "host": "http://192.168.252.1:9090"
+    }
+  ]
+}

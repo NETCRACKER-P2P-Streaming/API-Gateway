@@ -1,0 +1,19 @@
+{
+  "github_com/devopsfaith/krakend-cors": {
+      "allow_origins": [
+        "localhost:3000"
+      ],
+      "allow_methods": [
+        "*"
+      ],
+      "expose_headers": [
+        "*"
+      ],
+      "max_age": "12h",
+      "allow_headers": [
+        "*"
+      ],
+      "allow_credentials": true,
+      "debug": true
+   }
+}

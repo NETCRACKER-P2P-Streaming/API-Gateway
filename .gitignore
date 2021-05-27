@@ -1,4 +1,6 @@
 *.exe
+krakendEnv.json
+compiled-krakend.json
 
 ### IntelliJ IDEA ###
 .idea

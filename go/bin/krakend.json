@@ -1,6 +1,4 @@
 {
-  {{ $AmazonCognitoAdapter :="localhost:9090" }}
-  {{ $StreamRegistry := "localhost:8080" }}
   "version": 2,
   "name": "{{ .service.name }}",
   "port": {{ .service.port }},

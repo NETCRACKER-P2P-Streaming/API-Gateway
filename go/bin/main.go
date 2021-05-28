@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"io/ioutil"
 
 	"github.com/devopsfaith/krakend-ce"
 	cmd "github.com/devopsfaith/krakend-cobra"
@@ -22,6 +23,8 @@ const (
 	fcSettings  = "FC_SETTINGS"
 	fcPath      = "FC_OUT"
 	fcEnable    = "FC_ENABLE"
+	adapter     = "AmazonCognitoAdapter"
+	registry    = "StreamRegistry"
 )
 
 func main() {
@@ -38,6 +41,29 @@ func main() {
 		case <-ctx.Done():
 		}
 	}()
+
+	data, errRead := ioutil.ReadFile("krakend.json")
+
+	if errRead != nil {
+		fmt.Println(errRead);
+	}
+
+	if os.Getenv(adapter) == "" {
+		os.Setenv(adapter, "\"localhost:9090\"")
+	}
+
+	if os.Getenv(registry) == "" {
+		os.Setenv(registry, "\"localhost:8080\"")
+	}
+
+	krakendStr := string(data)
+	krakendEnvStr := os.ExpandEnv(krakendStr)
+
+	errWrite := ioutil.WriteFile("krakendEnv.json", []byte(krakendEnvStr), 0777)
+
+	if errWrite != nil {
+		fmt.Println(errRead);
+	}
 
 	krakend.RegisterEncoders()
 

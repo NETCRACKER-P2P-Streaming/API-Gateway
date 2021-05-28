@@ -16,4 +16,4 @@ ENV FC_PARTIALS=/go/bin/api-gateway/config/partials
 ENV FC_OUT=/go/bin/api-gateway/compiled-krakend.json
 ENV FC_TEMPLATES=/go/bin/api-gateway/config/templates
 WORKDIR /go/bin/api-gateway
-ENTRYPOINT ["./API-Gateway","run", "-c","./krakend.json"]
+ENTRYPOINT ["./API-Gateway","run", "-c","./krakendEnv.json"]

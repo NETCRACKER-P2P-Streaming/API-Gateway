@@ -26,7 +26,7 @@ The activation of the package works via environment variables when running krake
 
 **krakend.json** (main file with endpoints, host variables and separation of endpoint by authorization)
 
-`{{ $AmazonCognitoAdapter :="localhost:9090" }}` (to define host/port here)
+`$AmazonCognitoAdapter`, `$StreamRegistry` (to define host/port here on replasing)
 
 partials
 

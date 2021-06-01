@@ -55,6 +55,8 @@
 
       {{ template "authorization_admin_group" "/api/v1/admin/category"}}
       {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/categories-page"}}
+      {{ template "backend" $StreamRegistry}},
       {{ template "authorization_admin_group" "/api/v1/admin/stream"}}
       {{ template "backend" $StreamRegistry}},
       {{ template "authorization_admin_group" "/api/v1/admin/stream/close"}}

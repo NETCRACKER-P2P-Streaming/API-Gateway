@@ -1,5 +1,6 @@
 {
   "version": 2,
+   "timeout": "200000ms",
   "name": "{{ .service.name }}",
   "port": {{ .service.port }},
   "extra_config": {{ include "cors.txt" }},

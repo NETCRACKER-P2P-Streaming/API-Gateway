@@ -1,7 +1,7 @@
 {
   "github_com/devopsfaith/krakend-cors": {
       "allow_origins": [
-        "*"
+        "http*"
       ],
       "allow_methods": [
         "GET", 

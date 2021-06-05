@@ -49,6 +49,8 @@
       {{ template "backend" $StreamRegistry}},
       {{ template "public_group" "/api/v1/stream/increase-views"}}
       {{ template "backend" $StreamRegistry}},
+      {{ template "public_group" "/api/v1/stream/increase-viewers"}}
+      {{ template "backend" $StreamRegistry}},
       {{ template "public_group" "/api/v1/stream"}}
       {{ template "backend" $StreamRegistry}},
       {{ template "public_group" "/api/v1/categories/{categoryId}"}}
